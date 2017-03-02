@@ -8,7 +8,7 @@ import xml.dom.minidom as minidom
 import string
 
 file_name='result.txt'                 #write result to this file
-url_amap=r'http://restapi.amap.com/v3/place/text?&keyword=&types=01&city=4201&citylimit=true&output=xml&offset=20&page=1&key=e4ead3525fd497b1ca7a0dd97a7af55a&extensions=base'
+url_amap=r'http://restapi.amap.com/v3/place/text?&keyword=&types=01&city=4201&citylimit=true&output=xml&offset=20&page=1&key=9547045b74497d5aa4ff88147567138c'
 
 facility_type=r'types=05'           #eating&shopping facilities
 region=r'city=4201'                 #wuhan city
@@ -88,11 +88,16 @@ if __name__=='__main__':
 	getPOIdata(url_amap,'01')
 	for i in range(2,21):
 		if i<10:
-			typecode='0'+str(i)
+			typecode='0' + str(i)
+			p_typecpde='0'+str(i-1)
+		elif i==10:
+			typecode=str(i)
 			p_typecpde='0'+str(i-1)
 		else:
 			typecode=str(i)
 			p_typecpde=str(i-1)
 		url_amap=url_amap.replace('types='+p_typecpde, 'types='+typecode)
-		getPOIdata(url_amap,typecode)
 		print("the type of poi is "+typecode)
+		print(url_amap)
+		getPOIdata(url_amap,typecode)
+	    
