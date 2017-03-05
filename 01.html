@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-typen" content="text/html;charset=UTF-8">
+    <title>sherry的主页</title>
+    <!外部式css>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <!嵌入式css>
+    <style type="text/css">
+       /*设置样式,分组选择符*/
+        h1,span{
+            color: #6a2c99;
+            font-size: large;
+        }
+        /*排版：字体 字号 加粗 斜体 下划线等 缩进*/
+        body{font-family: "Microsoft Yahei";}
+        p{
+            text-indent: 2em;/*缩进*/
+            line-height: 1.5em;/*行间距*/
+            letter-spacing: normal;/*英文字母间距*/
+            word-spacing: 50px;/*词间距*/
+            text-align: center;/*对齐*/
+        }
+        /*class selector,可使用多次，可使用词列表同时设置多个样式*/
+        .class{color:green!important;}
+        /*id selector，只可使用一次*/
+        #id{color:deeppink;}
+        /*子选择器,直接后代；用空格 选择作用于所有后代*/
+       .first>a{
+           font-weight: bold;
+           font-style: italic;
+           text-decoration: underline;
+           color:hotpink;
+       }
+       /* 通用选择符*，作用于所有元素 */
+       *{font-size: medium;color:blue;}
+        table tr,td,th{border: 1px dashed}
+        /*盒模型*/
+        /*div{*/
+            /*/!*display: inline-block;*!/*/
+            /*border:2px solid red;/!*边框宽度*!/*/
+            /*margin: 50px;/!*与其他元素边界宽度*!/*/
+            /*padding: 50px;/!*内容与边框间的填充宽度*!/*/
+            /*/!*float:left;*!/*/
+            /*position: relative;left:100px;top:100px;*/
+        /*}*/
+        #maindiv{/*容器大小要指定，不然没有位置..*/
+            border:2px solid blue;
+            margin:50px;
+            padding:100px;
+            position: relative;
+        }
+        #firstdiv{
+            border:1px solid red;
+            position: absolute;
+            top:20px;
+            left:20px;
+        }
+       #seconddiv{
+           border:1px solid yellow;
+           position: absolute;
+           top:20px;
+           left:500px;
+       }
+        ol{
+            border-bottom: 1px dashed green;
+        }
+
+    </style>
+</head>
+<body>
+    <h1> first class </h1>
+    <p class="first"><a href="http://www.lmars.whu.edu.cn/index.jsp" title="实验室官网" target="_blank">测绘遥感信息工程国家重点实验室</a>是我国测绘学科第一个国家级重点实验室。2000年、2005年、2010年、2015年，实验室在国家科技部开展的国家重点实验室评估中<span>连续四次</span>被评为<strong>“优秀”</strong>。</p>
+    <hr/><!分割线>
+    <p>李清照&nbsp;&nbsp;《咏桂》<blockquote><span class="class">暗淡轻黄体性柔,</span><br/>情疏迹远只香留。<br/><span id="id">何须浅碧深红色,</span><br/>自是花中第一流。</blockquote></p>
+    <hr/><!分割线>
+    <form method="post" action="save.php">
+        <label for="username">用户名：</label><!for属性的值要与相关控件的id属性值一致>
+        <input type="text" name="username" id="username" value=""/>
+        <label for="pass">密码：</label>
+        <input type="password" name="pass" id="pass" value=""/>
+        <input type="submit" value="确定" name="submit"/>
+        <input type="reset" value="重置" name="reset"/><br/>
+        <label>联系我们</label><br/>
+        <textarea cols="10" rows="3">在这里输入内容...</textarea>
+    </form>
+    <form name="iForm">
+        选一个<br/>
+        <label for="male">male</label>
+        <input type="radio" value="1" name="onlyone" id="male"/>
+        <label for="female">female</label>
+        <input type="radio" value="2" name="onlyone" id="female"/>
+        <label>爱好：</label>
+        <select>
+            <option value="11">11</option>
+            <option value="22">22</option>
+            <option value="33">33</option>
+        </select>
+    </form>
+    <hr/><!分割线>
+    <p>python语法<br/>
+        <code>import urllib</code><br/>
+        <pre>
+        #get html by url and save the data to xml file
+        def getHtml(url):
+            page = urlopen(url)
+            html = page.read()
+            #print(type(html))
+
+            try:
+                #open xml file and save data to it
+                with open(xml_file,'wb') as xml_file_handle:
+                    xml_file_handle.write(html)
+            except IOError as err:
+                print("IO error: "+str(err))
+                return -1
+
+            return 0
+        </pre>
+    </p>
+    <hr/><!分割线>
+    <div id="maindiv">
+        <div id="firstdiv">
+            <h2> 无序列表信息 </h2>
+            <ul>
+                <li>布丁</li>
+                <li>酸奶</li>
+                <li>芝士</li>
+            </ul>
+        </div>
+
+        <div id="seconddiv">
+            <h2> 有序列表信息 </h2>
+            <ol>
+                <li>草莓</li>
+                <li>桂圆</li>
+                <li>芒果</li>
+            </ol>
+        </div>
+    </div>
+    <hr/><!分割线>
+    <table summary="it is just an example">
+        <caption>例子</caption>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+        </tr>
+        <tr>
+            <td>one</td>
+            <td>two</td>
+        </tr>
+    </table>
+    <address>地址：武汉大学信息学部</address>
+    <img src="myimage.gif" alt="SorryT^T" title="gif">
+</body>
+</html>
